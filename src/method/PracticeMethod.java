@@ -14,7 +14,8 @@ public class PracticeMethod {
 	
 	public static int getSeconds (int processTime) {
 		final int CHANGE = 60;
-		return processTime - getMinutes(145) * CHANGE;
+		// return processTime - getMinutes(145) * CHANGE;
+		return processTime % CHANGE;
 	}
 	
 	public static int getFahrenheit (int celsius) {
@@ -27,6 +28,10 @@ public class PracticeMethod {
 	
 	public static int getAverageScore (int sumScore, int subjects) {
 		return sumScore / subjects;
+	}
+	
+	public static double getAverage(int sum, int subjectCount) {
+		return (double) sum / subjectCount;
 	}
 	
 	public static void getGrade (int averageScore) {
@@ -45,15 +50,39 @@ public class PracticeMethod {
 		}
 	}
 	
-	public static int getFlightFee (int age) {
-		int adultOneWayFlightFare = 300000;
-		int kidOneWayFlightFare = 120000;
+	public static String getGrade (double average) {
+		String grade = "";
 		
-		if (age >= 19) {
-			return adultOneWayFlightFare;
+		if (average >= 95) {
+			grade = "A+";
+		}else if (average >= 90) {
+			grade = "A";
+		}else if (average >= 85) {
+			grade = "B+";
+		}else if (average >= 80) {
+			grade = "B";
+		}else if (average >= 70) {
+			grade = "C";
 		}else {
-			return kidOneWayFlightFare;
+			grade = "F";
 		}
+		
+		return grade;
+	}
+	
+	public static int getFlightFee (int age) {
+		final int ADULT_ONE_WAY_FLIGHTFARE = 300000;
+		final int KID_ONE_WAY_FLIGHTFARE = 120000;
+		final int ADULT_AGE = 19;
+		
+		if (age >= ADULT_AGE) {
+			return ADULT_ONE_WAY_FLIGHTFARE;
+		}else {
+			return KID_ONE_WAY_FLIGHTFARE;
+		}
+		
+		// System.out.println("~~~"); // return 이후로는 쓸 수 없다.
+		// else if로 작성하면 return 이후가 에러가 안 나는데 getFlightFee가 에러가 난다. else인 경우가 없어서.
 	}
 	
 	public static void getTrip(int totalFee) {
@@ -67,26 +96,33 @@ public class PracticeMethod {
 	
 	
 	public static void main (String[] args) {
-		int time = getTime(5, 50);
+		
+		int minute = 5;
+		int second = 50;
+		
+		int time = getTime(minute, second);
 		System.out.println(time + "초");
 		
 		
 		
-		
-		int minutes = getMinutes(145);
-		int seconds = getSeconds(145);
+		int processTime = 145;
+		int minutes = getMinutes(processTime);
+		int seconds = getSeconds(processTime);
 		System.out.println(minutes + "분 " + seconds + "초");
 		
 		
 		
-		
-		int fahrenheit = getFahrenheit(30);
+		int celsius = 30;
+		int fahrenheit = getFahrenheit(celsius);
 		System.out.println(fahrenheit + "F");
 		
 		
 		
-		
-		int sumScore = getSumScore(90, 88, 70, 80);
+		int korScore = 90;
+		int engScore = 88;
+		int mathScore = 70;
+		int progScore = 80;
+		int sumScore = getSumScore(korScore, engScore, mathScore, progScore);
 		System.out.println("총점: " + sumScore + "점");
 		
 		int averageScore = getAverageScore(sumScore, 4);
@@ -101,6 +137,7 @@ public class PracticeMethod {
 		int daughter = getFlightFee(11);
 		
 		int totalFee = father + mother + daughter;
+	
 		
 		getTrip(totalFee);
 	}
