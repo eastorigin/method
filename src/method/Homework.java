@@ -60,6 +60,7 @@ public class Homework {
 		Scanner keyboard = new Scanner(System.in);
 		while(true) {
 			System.out.println("연산자를 입력하세요");
+			System.out.println("종료를 원할시 exit를 입력해주세요");
 			String calculate = keyboard.nextLine();
 			if(calculate.equals("exit")) {
 				break;
@@ -72,7 +73,7 @@ public class Homework {
 				keyboard.nextLine();
 			}
 		}
-		primeNumber(10);
+		primeNumber(100);
 		System.out.println(isPrimeNumber(13));
 	}
 }
