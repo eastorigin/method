@@ -3,6 +3,15 @@ package method;
 import java.util.Scanner;
 
 public class Homework {
+	
+	/*
+	 * 1. 코드 작성
+	 * 2. 테스트 (단위 테스트)
+	 * 		- 부정 테스트 (내가 의도한 대로 동작이 안 되는지 체크)
+	 * 			- operator가 "exit"일 때, 정상적으로 종료가 되는가?
+	 * 		- 긍정 테스트 (내가 의도한 대로 동작이 되는지 체크)
+	 */
+	
 	// 문제 1번
 	public static void calculator (String operator, int number1, int number2) {
 		if(operator.equals("+")) {
@@ -27,6 +36,7 @@ public class Homework {
 		int divisorCount = 0;
 		int primeNumberCount = 0;
 		for(int i = 2; i < number1 + 1; i++) {
+			divisorCount = 0;
 			for(int j = 1; j < i + 1; j++) {
 				if(i % j == 0) {
 					divisorCount++;
@@ -34,10 +44,11 @@ public class Homework {
 			}
 			if(divisorCount == 2) {
 				primeNumberCount++;
-				divisorCount = 0;
-			}else {
-				divisorCount = 0;
+				// divisorCount = 0;
 			}
+//			else {
+//				divisorCount = 0;
+//			}
 		}
 		System.out.println("1~" + number1 + " 사이에 소수의 개수: " + primeNumberCount + "개");
 	}
